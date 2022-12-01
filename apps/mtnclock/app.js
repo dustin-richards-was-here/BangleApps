@@ -1,4 +1,7 @@
-var data = require("Storage").readJSON("mtnclock.json", 1) || {};
+var settings = Object.assign({
+  // default value
+  showWidgets: false
+}, require("Storage").readJSON("mtnclock.json", 1) || {});
 
 //seeded RNG to generate stars, snow, etc
 function sfc32(a, b, c, d) {
@@ -321,8 +324,11 @@ function setWeather() {
     }
   }
   draw(a);
-  Bangle.loadWidgets();
-  Bangle.drawWidgets();
+
+  if (settings.showWidgets) {
+    Bangle.loadWidgets();
+    Bangle.drawWidgets();
+  }
 }
 
 const _GB = global.GB;
