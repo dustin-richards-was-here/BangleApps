@@ -321,6 +321,8 @@ function setWeather() {
     }
   }
   draw(a);
+  Bangle.loadWidgets();
+  Bangle.drawWidgets();
 }
 
 const _GB = global.GB;
